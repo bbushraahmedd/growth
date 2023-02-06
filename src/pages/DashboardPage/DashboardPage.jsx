@@ -11,17 +11,22 @@ import * as taskAPI from '../../utils/taskApi';
 
 function DashboardPage(){
     const [tasks, setTasks] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
     async function handleAddTask(task){
 
         try {
-            const response = await taskAPI.create(task)
-            console.log(response, 'from postapi create')
+            setLoading(true);
+            const response = await taskAPI.create(task);
+            console.log(response, 'from postapi create');
             
-            setTasks([response.task, ...tasks])
-            console.log(response.task, "RESPONSE.TASK")
+            setTasks([response.task, tasks]);
+            console.log(response.task, "RESPONSE.TASK");
+            setLoading(false);
         } catch (err) {
-            console.log(err, 'look in the handlAddTask') 
+            console.log(err, 'look in the handlAddTask'); 
+            setError("error in creating task, try again");
         }
     }
 
@@ -30,8 +35,10 @@ async function getTasks(){
         const response = await taskAPI.getAll();
         console.log(response, "task");
         setTasks(response.task);
+        setLoading(false);
     } catch (err) {
         console.log(err.message, "this is an error in getting the task");
+        setLoading(false);
     }
 }
 
