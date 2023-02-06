@@ -2,7 +2,7 @@
 import {IconButton, Container, Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function TaskList({task}){
+function TasksCard({task}){
 
     // function handleDelete() {
     //     setTasks(tasks.filter((el) => el.id !== task.id));
@@ -21,4 +21,4 @@ function TaskList({task}){
     );
 }
 
-export default TaskList;
+export default TasksCard;
