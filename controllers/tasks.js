@@ -8,7 +8,6 @@ export default {
 
 async function create(req, res){
     console.log(req.user, "<<THATS YOUR USER", req.body)
-    // why cant i see this in my terminal?
 
     try {
         const task = await Task.create({
@@ -24,7 +23,6 @@ async function create(req, res){
     }
 }
 
-// ask why i got an error saying await cant be used without the async 
 
 
 async function index(req, res){

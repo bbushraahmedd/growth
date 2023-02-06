@@ -1,4 +1,3 @@
-import * as React from 'react';
 
 import { Container, CssBaseline, Box, Avatar, Typography, TextField, IconButton, InputAdornment } from '@mui/material';
 import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
@@ -17,21 +16,13 @@ function TaskForm({handleAddTask}){
 
     function handleSubmit(e){
         e.preventDefault();
-        // setTasks([
-        //     ...tasks,
-        //     {text: newTask,
-        //     id: Math.random() * 100}
-        // ]);
-        // setNewTask("");
-        const formData = new FormData()
-        formData.append('content', content);
-        // do i need to make formdata if im not addng a photo to this?
-        handleAddTask(formData)
+        
+        handleAddTask({content: content})
 
     }
 
    return ( 
-    <Container maxWidth='sm'>
+    <Container maxWidth='lg'>
         <CssBaseline />
         <Box
           sx={{
@@ -50,18 +41,18 @@ function TaskForm({handleAddTask}){
         sx={{ marginBottom: 4}} >
             Tasks
         </Typography>
-        <TextField
-        fullWidth
-        onChange={handleChange}
-        label="Add Task"
-        value={content}
-        />
-            <Box component="form" onSubmit={handleSubmit} >
-                <InputAdornment position="start">
-                    <IconButton aria-label="add-task" onClick={handleSubmit} type="submit">
-                        <AddIcon color="success"/>
-                    </IconButton>
-                </InputAdornment>
+        <Box maxWidth='md' component="form" onSubmit={handleSubmit} >
+           <TextField
+            fullWidth
+            onChange={handleChange}
+            label="Add Task"
+            value={content}
+            />
+            <InputAdornment position="start">
+                <IconButton aria-label="add-task" type="submit">
+                    <AddIcon color="success"/>
+                </IconButton>
+            </InputAdornment>
             </Box>
         </Box>
     </Container>

@@ -1,5 +1,5 @@
 
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 
 import TaskForm from '../../components/TaskForm/TaskForm';
@@ -9,23 +9,35 @@ import {Box, Grid} from '@mui/material';
 
 import * as taskAPI from '../../utils/taskApi';
 
-function DashboardPage(task){
+function DashboardPage(){
     const [tasks, setTasks] = useState([]);
 
-    async function handleAddTask(){
-        console.log(task, "<<<<this is the task object in handle ADD task");
-        // when i console.log this, its currently sending me and empty/nameless ibject,, shouldnt it be labeled FormData?
-
-        // in the routes folder why is it just a / and then in the server its /api/tasks or user etc?
+    async function handleAddTask(task){
 
         try {
             const response = await taskAPI.create(task)
             console.log(response, 'from postapi create')
+            
             setTasks([response.task, ...tasks])
+            console.log(response.task, "RESPONSE.TASK")
         } catch (err) {
-            console.log(err, 'look in the handlAddTask') //getting a Header error rn?
+            console.log(err, 'look in the handlAddTask') 
         }
     }
+
+async function getTasks(){
+    try {
+        const response = await taskAPI.getAll();
+        console.log(response, "task");
+        setTasks(response.task);
+    } catch (err) {
+        console.log(err.message, "this is an error in getting the task");
+    }
+}
+
+useEffect(() => {
+    getTasks();
+}, []);
 
    return (
     <Grid>
@@ -36,7 +48,7 @@ function DashboardPage(task){
         marginTop: 3, 
         boxShadow: 5}}>
     <TaskForm handleAddTask={handleAddTask}/>
-    <TaskList />
+    <TaskList tasks={tasks}/>
     </Box>
     </Grid>
     );
