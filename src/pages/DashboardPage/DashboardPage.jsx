@@ -31,7 +31,7 @@ function DashboardPage({handleLogout}){
         }
     }
 
-async function handleDeleteTask(taskId) {
+async function deleteTask(taskId) {
     try {
         const response = await taskAPI.deleteTask(taskId);
         console.log(response, 'from delete')
@@ -70,7 +70,7 @@ useEffect(() => {
     <TaskForm handleAddTask={handleAddTask}/>
     <TaskList 
     tasks={tasks}
-    deleteTask={handleDeleteTask}/>
+    deleteTask={deleteTask}/>
     </Box>
     </Grid>
     );

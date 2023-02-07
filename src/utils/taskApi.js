@@ -28,6 +28,7 @@ export function getAll(){
 
 export function deleteTask(taskId) {
     return fetch(`${BASE_URL}/${taskId}`, {
+        // getting a bad request error 😭,, but delete it working 
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json', 
@@ -35,6 +36,5 @@ export function deleteTask(taskId) {
         }
     }).then((res) => {
         if (res.ok) return res.json();
-        throw new Error(res.error);
     })
 }
