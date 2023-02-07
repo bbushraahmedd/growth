@@ -8,8 +8,9 @@ import NavBar from '../../components/NavBar/NavBar';
 import {Box, Grid} from '@mui/material';
 
 import * as taskAPI from '../../utils/taskApi';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
-function DashboardPage(){
+function DashboardPage({handleLogout}){
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -32,7 +33,7 @@ function DashboardPage(){
 
 async function handleDeleteTask(taskId) {
     try {
-        const response = await taskAPI.handleDeleteTask(taskId);
+        const response = await taskAPI.deleteTask(taskId);
         console.log(response, 'from delete')
         getTasks();
     } catch (err) {
@@ -59,7 +60,8 @@ useEffect(() => {
 
    return (
     <Grid>
-    <NavBar/>
+    <NavBar handleLogout={handleLogout}/>
+    <ErrorMessage error={error} />
     <Box maxWidth="md" 
     sx={{ 
         marginLeft: 18, 
@@ -68,7 +70,7 @@ useEffect(() => {
     <TaskForm handleAddTask={handleAddTask}/>
     <TaskList 
     tasks={tasks}
-    handleDeleteTask={handleDeleteTask}/>
+    deleteTrip={handleDeleteTask}/>
     </Box>
     </Grid>
     );

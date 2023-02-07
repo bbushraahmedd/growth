@@ -3,12 +3,12 @@ import TaskCard from '../TaskCard/TasksCard.jsx'
 
 import { Box, Card } from '@mui/material';
 
-function TaskList({tasks, handleDeleteTask}){
+function TaskList({tasks, deleteTask}){
     
     const tasksJsx = tasks
     ? tasks.filter((task) => task)
         .map((task) => {
-          return <TaskCard task={task}  key={task._id} handleDeleteTask={handleDeleteTask}/>;
+          return <TaskCard task={task}  key={task._id} deleteTask={deleteTask}/>;
         })
     : [];
 //     console.log(tasks, "helloo world")
