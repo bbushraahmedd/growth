@@ -42,7 +42,7 @@ async function index(req, res){
 async function deleteTask(req, res) {
     try {
         await Task.findByIdAndDelete(req.params.id);
-        res.join({content: 'task removed'})
+        res.join({data: 'task removed'})
     } catch (err) {
         res.status(400).json({err});
     }

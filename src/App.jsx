@@ -27,7 +27,7 @@ function App() {
    return (
     <Routes>
       {/* make sure to include the loggeduser below! */}
-      <Route path="/" element={<DashboardPage handleLogout={handleLogout}/>} /> 
+      <Route path="/" element={<DashboardPage loggedUser={user} handleLogout={handleLogout}/>} /> 
       <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
       <Route path="/signup" element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
     </Routes>

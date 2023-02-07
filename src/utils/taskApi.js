@@ -25,3 +25,16 @@ export function getAll(){
     })
     .then(res => res.json());
 }
+
+export function deleteTask(taskId) {
+    return fetch(`${BASE_URL}/${taskId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json', 
+            Authorization: "Bearer " + tokenService.getToken()
+        }
+    }).then((res) => {
+        if (res.ok) return res.json();
+        throw new Error(res.error);
+    })
+}

@@ -70,7 +70,7 @@ useEffect(() => {
     <TaskForm handleAddTask={handleAddTask}/>
     <TaskList 
     tasks={tasks}
-    deleteTrip={handleDeleteTask}/>
+    deleteTask={handleDeleteTask}/>
     </Box>
     </Grid>
     );
