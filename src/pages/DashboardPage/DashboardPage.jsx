@@ -21,8 +21,8 @@ function DashboardPage(){
             const response = await taskAPI.create(task);
             console.log(response, 'from postapi create');
             
-            setTasks([response.task, tasks]);
-            console.log(response.task, "RESPONSE.TASK");
+            setTasks([response.task, ...tasks]);
+            console.log(response, "RESPONSE.TASK");
             setLoading(false);
         } catch (err) {
             console.log(err, 'look in the handlAddTask'); 
@@ -30,11 +30,22 @@ function DashboardPage(){
         }
     }
 
+async function handleDeleteTask(taskId) {
+    try {
+        const response = await taskAPI.handleDeleteTask(taskId);
+        console.log(response, 'from delete')
+        getTasks();
+    } catch (err) {
+        console.log(err)
+        setError('task did not delete')
+    }
+}
+
 async function getTasks(){
     try {
         const response = await taskAPI.getAll();
         console.log(response, "task");
-        setTasks(response.task);
+        setTasks(response.data);
         setLoading(false);
     } catch (err) {
         console.log(err.message, "this is an error in getting the task");
@@ -55,7 +66,9 @@ useEffect(() => {
         marginTop: 3, 
         boxShadow: 5}}>
     <TaskForm handleAddTask={handleAddTask}/>
-    <TaskList tasks={tasks}/>
+    <TaskList 
+    tasks={tasks}
+    handleDeleteTask={handleDeleteTask}/>
     </Box>
     </Grid>
     );

@@ -2,20 +2,15 @@
 import {IconButton, Container, Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function TasksCard({task}){
-
-    // function handleDelete() {
-    //     setTasks(tasks.filter((el) => el.id !== task.id));
-    // onClick={handleDelete}
-    // }
+function TasksCard({task, handleDeleteTask}){
 
    return ( 
     <Container>
         <Box>
-            <IconButton aria-label="delete-task" edge="end"  >
+            <IconButton aria-label="delete-task" edge="end"  onClick={handleDeleteTask}>
                 <DeleteIcon/>
             </IconButton>
-                {task}
+                {task.content}
         </Box>
     </Container>
     );

@@ -3,12 +3,22 @@ import TaskCard from '../TaskCard/TasksCard.jsx'
 
 import { Box, Card } from '@mui/material';
 
-function TaskList({tasks}){
- const tasksJsx = tasks?.map((task) => {
-    return <TaskCard
-        task={task} 
-        key={task._id} />
- });
+function TaskList({tasks, handleDeleteTask}){
+    
+    const tasksJsx = tasks
+    ? tasks.filter((task) => task)
+        .map((task) => {
+          return <TaskCard task={task}  key={task._id} handleDeleteTask={handleDeleteTask}/>;
+        })
+    : [];
+//     console.log(tasks, "helloo world")
+//  const tasksJsx = tasks?.map((task) => {
+//     task !== undefined ? (
+//         <TaskCard
+//        task={task} 
+//        key={task._id} />
+//     ) : null
+//  });
  return (
     <Box maxWidth='sm' sx={{ 
         marginLeft: 18, 
