@@ -1,5 +1,5 @@
 
-# Mern Boilerplate
+# growth
 
 This is a mern Boilerplate using vite to compile the frontend.  
 
@@ -14,19 +14,28 @@ This is a mern Boilerplate using vite to compile the frontend.
 4. Take a look at the server.js code, there is some es6 things to setup `__dirname`
 
 
-#### Setup 
+### Technologies Used
 
-1. ```npm install```
-2. ```npm run dev```
-3. setup `.env` file 
+- Javascript
+- HTML
+- CSS
+- Material UI
+- React
+- React Router
+- EJS
+- Mongoose
+- MongoDB
+- Express
+- Node
+- JWT (JSON Web Tokens)
 
-- .env file 
+### Get Started
+- View the [Trello Board](https://trello.com/b/9BCDh0lQ/project-4-growth)
+- View the [Wireframe](https://www.figma.com/file/mkLOfXi7KyEGcPXM6xMk8F/Growth?node-id=0%3A1&t=i7tHjBFncQt0HJ0c-0)
+- View the [ERD](https://docs.google.com/spreadsheets/d/1zKj7oOf2y9ZAHXrtSdxRrN8BpBwGXVbXHJlNRoQNoq4/edit#gid=0)
 
-```
-SECRET=seiRocks!
-```
-
-##### Starting the App
-
-- One terminal
-command - ```npm run dev```
+## Next Steps
+1. Include a plant API
+2. Track water health using charts
+3. Keep track of individual plant health
+3. 
