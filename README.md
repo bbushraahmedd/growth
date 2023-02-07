@@ -36,4 +36,3 @@
 1. Include a plant API
 2. Track water health using charts
 3. Keep track of individual plant health
-3. 
